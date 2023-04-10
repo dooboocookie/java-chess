@@ -1,9 +1,6 @@
 package chess.domain.chessgame;
 
-import chess.domain.board.Board;
-import chess.domain.board.File;
-import chess.domain.board.Rank;
-import chess.domain.board.Square;
+import chess.domain.board.*;
 import chess.domain.piece.Piece;
 import chess.domain.side.Color;
 
@@ -24,8 +21,12 @@ public class ChessGame {
         this.board = board;
     }
 
-    public static ChessGame createInit() {
-        return new ChessGame(null, GameState.INIT, null); // 이 부분이 확신이 없음
+    public static ChessGame createEmptyGame() {
+        return new ChessGame(null, GameState.INIT, null);
+    }
+
+    public static ChessGame createNew(final Long id) {
+        return new ChessGame(id, GameState.RUNNING, BoardFactory.createInitial());
     }
 
     public void pause() {
@@ -33,10 +34,8 @@ public class ChessGame {
         gameState = GameState.PAUSE;
     }
 
-    public void move(final String sourceSquareInput, final String targetSquareInput) {
+    public void move(final Square sourceSquare, final Square targetSquare) {
         validateRunning();
-        Square sourceSquare = Square.from(sourceSquareInput);
-        Square targetSquare = Square.from(targetSquareInput);
         board.makeMove(sourceSquare, targetSquare);
         if (board.findColorKingDied() != Color.NOTHING) {
             gameState = GameState.FINISHED;

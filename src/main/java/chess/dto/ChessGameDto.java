@@ -4,9 +4,9 @@ import chess.domain.side.Color;
 
 public class ChessGameDto {
     private final Long id;
-    private final Color turn;
+    private final String turn;
 
-    public ChessGameDto(Long id, Color turn) {
+    public ChessGameDto(Long id, String turn) {
         this.id = id;
         this.turn = turn;
     }
@@ -15,7 +15,7 @@ public class ChessGameDto {
         return id;
     }
 
-    public Color getTurn() {
+    public String getTurn() {
         return turn;
     }
 }
