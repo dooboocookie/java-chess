@@ -1,7 +1,5 @@
 package chess.dto;
 
-import chess.domain.side.Color;
-
 public class ChessGameDto {
     private final Long id;
     private final String turn;

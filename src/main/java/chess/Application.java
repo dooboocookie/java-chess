@@ -4,8 +4,6 @@ import chess.controller.ChessController;
 import chess.dao.ChessGameDao;
 import chess.dao.PieceDao;
 import chess.service.ChessGameService;
-import chess.view.InputView;
-import chess.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {

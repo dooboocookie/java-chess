@@ -1,11 +1,17 @@
 package chess.service;
 
-import chess.dao.*;
-import chess.domain.board.*;
-import chess.domain.chessgame.*;
-import chess.domain.piece.*;
+import chess.dao.ChessGameDao;
+import chess.dao.PieceDao;
+import chess.domain.board.Board;
+import chess.domain.board.BoardFactory;
+import chess.domain.board.Square;
+import chess.domain.chessgame.ChessGame;
+import chess.domain.chessgame.GameState;
+import chess.domain.piece.Piece;
+import chess.domain.piece.Role;
 import chess.domain.side.Color;
-import chess.dto.*;
+import chess.dto.ChessGameDto;
+import chess.dto.PieceDto;
 
 import java.util.*;
 
@@ -62,7 +68,7 @@ public class ChessGameService {
         return chessGame.status();
     }
 
-    private PieceDto convertPieceToPieceDto(final Piece piece, final Square square){
+    private PieceDto convertPieceToPieceDto(final Piece piece, final Square square) {
         String file = square.getFile().name();
         int rank = square.getRank().getPosition();
         String role = piece.getRole().name();
